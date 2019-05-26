@@ -1,0 +1,407 @@
+Q. What Powershell Scripting Is?
+PowerShell file contains a series of PowerShell commands with each command appearing on a separate line. To use a text file as a PowerShell script, its filename should have.PS1 extension. To run a script you need
+o	Type the commands in a text editor
+o	Save the file with .ps1 extension
+o	Execute the file in PowerShell
+
+Q. What Is the Function Of $input Variable?
+The $input variable enables a function to access data coming from the pipeline
+Q. How You Can Rename A Variable?
+To rename a variable,
+Rename-Item- Path Env: MyVariable –NewName MyRenamedVar
+Q. How You Can Convert The Object Into Html?
+To convert the object into HTML
+Get-Process l Sort-object – property CPU –descending l convert to – HTML l Out-file “process.html”
+Q. What Is the Difference, In Powershell, Between A Function And An “advanced Function”?
+This could be a trick question for an average candidate, but normally, good candidates should know that the only thing that makes a function advanced and unlocks the wonderful tooling which comes with it is : [CmdletBinding()].
+A great candidate would be pretty enthusiastic about all the powerful tools enabled by advanced functions. Any PowerShell scripter who strives to build professional-grade tools should be thankful for all the work PowerShell is doing for us.
+Q. You Have A Script Which Uses Read-host To Prompt The User For An Ip Address. You Need To Make Sure The User Inputs A Valid Ip Address. How Would You Do That ?
+A good candidate would probably use one of 2 ways :
+o	Splitting the address in 4 elements and try to cast them to a [byte]
+o	A regular expression
+A great candidate would use the much simpler and more robust method : let the .NET Framework do the hard work and just try to cast the input string to the [System.Net.IPAddress] class.
+By the way, the candidate should know that what we get from Read-Host is a [string].
+Q. How Would You Set A Registry Value With Powershell?
+Yeah, we start easy, but it is not that intuitive. This requires knowing that there is no registry-specific cmdlets, so we have to use the registry provider and Set-ItemProperty.
+The registry has been an integral part of Windows for ever, so this is hardly area-specific knowledge. It is very likely that any PowerShell scripter has already performed this task at least once, maybe even on a almost-daily basis.
+Q. What Argument Can Be Used To Convert An Object Into A String Or Convert The Property Of An Object Into The String?
+Expand is the argument that should be used with the property name to convert an object property simply into a string.
+e.g Get-ADcomputer –filter * | select-Object –expand name
+Q. What Are Two Ways Of Extending Powershell?
+o	PSSnapins
+o	Modules
+
+Q. What Are The 4 Types Of Format Commands That Can Be Used To Format Data?
+o	Format-Wide
+o	Format-List
+o	Format-Table
+o	Format-Custom
+o	
+Q. How Will You Check What Commands Have Been Added After Adding The New Snapin To Powershell ?
+Get-Command -pssnapin <snapin name> –> Lists all commands that got added when the snapin was added to the shell
+Q. How Will You Check The Default Path For Powershell Modules?
+Get-Content env:psmodulepath
+Q. What Is the Difference Between Convertto-csv And Export-csv Commands?
+ConvertTo-CSV is a one step process that only converts data into csv format and let it remain inside the shell Export-CSV is a 2 step process that not only converts data into CSV and also writes the output to a CSV format file.
+Q. How Would You Ping A Remote Computer With 5 Packets Using Powershell?
+Again, this is basic stuff. I wouldn’t get caught up in ideology, the good old ping.exe is perfectly valid, as long as the candidate knows the option to specify 5 packets.
+If you really want the more PowerShelly Test-Connection, then ask : I just want the command to return $True if the ping is successful and $False if it is not.
+Q. What Are Cmdlet’s?
+Windows PowerShell introduces the concept of a cmdlet which are simple build in commands, written in a .net language like C# or VB.
+Q. Where Is Powershell Located In Sharepoint ?
+On the Start menu, click All Programs -> Click Microsoft SharePoint 2010 Products -> Click SharePoint 2010 Management Shell.
+Q. What Is Windows Powershell ?
+Windows PowerShell is a new Windows command-line shell designed especially for system administrators. In the SharePoint administration context, Windows PowerShell is another administration tool that supersedes the existing Stsadm.exe.
+
+Q. How Do You Comment Out Code In Powershell?
+Like other languages powershell also supports single/Inline comments line and multi line comments.
+Starting with PowerShell V1 there’s only # to make the text after it a comment.
+In PowerShell V2 “<# #>” can be used for block comments (multi-line) and more specifically for SYNOPSIS, DESCRIPTION, NOTES, LINK help comments.
+Example: Sinlgle/Inline comments
+# This is a single or inline comment starts with hash in Powershell
+Example: Block comments (multi-line)
+<# this is a first line of comment
+this is a second line of comment
+this is a third line of comment
+.
+.
+.
+this is a last line of comment
+#>
+Q. What are the key characteristics of PowerShell?
+The key characteristics of PowerShell are
+PowerShell is object-based and not text based
+Commands in PowerShell are customizable
+It is a command line interpreter and scripting environment
+
+Q. In PowerShell what does variables holds?
+In variables PowerShell contains strings, integers and objects. It does not have special variables as it is pre-defined with PowerShell
+
+Q. Explain what is the significance of brackets in PowerShell?
+Parenthesis Brackets (): Curved parenthesis style brackets are used for compulsory
+arguments.
+Braces Brackets {} : Curly brackets are employed in blocked statements
+Square Brackets []: They define optional items, and they are not frequently used
+
+Q. What does it mean cmdlet’s?
+Cmdlet’s are simple build in commands written in .net language like C# or VB introduced by Windows
+PowerShell
+
+
+
+Q. Explain what is PowerShell Loop?
+Automating repetitive task with the help of PowerShell loop is known as PowerShell Loop. Through
+PowerShell, you can execute For each loop, While loop and Do While loop.
+
+Q. Explain can you create PowerShell scripts for deploying components in SharePoint?
+If you have created a web part using VS 2010 then, you can deploy it using cntrl+f5. However to
+Activate the web part feature you can write a PowerShell script (.ps1) and execute it after deployment
+
+Q. Explain about the PowerShell’s comparison operators?
+Comparison Operators compares value in PowerShell. Four types of comparison operators are used
+Equality, match, containment and replace. In PowerShell, one of the key comparison operators
+is –eq that is used instead of “=” sign for declaring variables. Likewise, there are other operators like
+–ne for “not equal” , -gt ( greater than ) or –lt (less than).
+
+Q. Explain what is PowerShell pipeline is used for?
+PowerShell pipeline is used for joining two statements such that the output of one statement becomes
+the input of the second.
+
+Q. Explain what is PowerShell get-command?
+Get command in PowerShell is used to fetch other cmdlets, for example you are looking for cmdlet
+between letter L and R then your PowerShell get-command will be like
+# PowerShell Get – Command Range
+Clear-Host
+Get-Command [ L–R ]*
+
+Q. Explain with an example how you can map a network drive in PowerShell?
+To map a network drive in PowerShell you have to use the command like
+# PowerShell Map Network Drive
+$Net = $( New – Object – ComObject Wscript.Network )
+$Net.MapNetworkDrive( “S:”, \\expert\guru99 )
+In here the drive letter is “S:” and the Network share is called ‘expert’ on a computer called ‘guru99.’
+
+Q. Mention what are the three ways that PowerShell uses to ‘Select’?
+The most common way is in a WMI Query Language (WQL) statement. In this technique
+Wmiobject uses ‘-query’ to introduce a classic ‘Select * from’ a phrase
+The second context for ‘Select’ in PowerShell is Select-String. This cmdlet checks for a word,
+phrase or any pattern match
+Another way is Select Object
+
+Q. What is the function of Get-ServiceStatus in PowerShell?
+The cmdlets of windows enable you to filter the window services. PowerShell can list which services are ‘Running’ and which are ‘Stopped’ by scripting with windows.
+
+Q. Explain what PowerShell Scripting is?
+PowerShell file contains a series of PowerShell commands with each command appearing on a
+separate line. To use a text file as a PowerShell script, its filename should have.PS1 extension. To run a script you need
+Type the commands in a text editor
+Save the file with .ps1 extension
+Execute the file in PowerShell
+
+Q. What is the use of hash table in PowerShell?
+A hash table is also referred as dictionary. It is an array that allows you to store data in a “key-value” pair association. The “key” and “value” can be of any data and length. To declare a hash table you have to use @ followed by curly braces.
+
+Q. Explain what is the use of Array in PowerShell?
+The use of Array in PowerShell is to run a script against remote computers. In order to create an
+array, you have to create a variable and assign the array. Arrays are represented by “@”symbol,
+they are represented as hashtable but not followed by curly braces.
+For example, $arrmachine = @ ( “machine1” , “machine2” , “machine3”)
+
+Q. Mention what is the command that can be used to get all child folders in a specific
+folder?
+To get all child folders in a specific folder, you have to use parameter recurse in the code.
+Get-ChildItem C:\Scripts –recurse
+
+Q. Explain how you can convert the object into HTML?
+To convert the object into HTML
+Get-Process l Sort-object – property CPU –descending l convert to – HTML l Out-file “process.html”
+
+Q. Explain how you can rename a variable?
+To rename a variable,
+Rename-Item- Path Env: MyVariable –NewName MyRenamedVar
+
+Q. Explain what is the function of $input variable?
+The $input variable enables a function to access data coming from the pipeline
+
+
+
+Q. What is the code to find the name of the installed application on the current
+computer?
+Get-WmiObject-Class Win32_Product- ComputerName . l Format-wide-column1
+
+Q. Explain how you can find in PowerShell that all the sql services are on one server?
+There are two ways to do this
+get-wmiobject win32_service l where-object {$_name-like “*sql*”}
+get-service sql*
+
+Q.How do you comment out code in powershell?
+Like other languages PowerShell also supports single/Inline comments line and multi line comments.
+Starting with PowerShell V1 there’s only # to make the text after it a comment.
+In PowerShell V2 “<# #>” can be used for block comments (multi-line) and more specifically for SYNOPSIS, DESCRIPTION, NOTES, LINK help comments.
+Example: Sinlgle/Inline comments
+# This is a single or inline comment starts with hash in Powershell
+Example: Block comments (multi-line)
+
+<# this is a first line of comment
+this is a second line of comment
+this is a third line of comment
+.
+.
+.
+this is a last line of comment
+#>
+Q. Where is Powershell located in sharePoint ?
+On the Start menu, click All Programs -> Click Microsoft SharePoint 2010 Products -> Click SharePoint 2010 Management Shell.
+
+Q.What are cmdlet’s?
+Windows PowerShell introduces the concept of a cmdlet which are simple build in commands, written in a .net language like C# or VB.
+
+
+Q.Can you tell me two major differences between $Other_Language and PowerShell ?
+This question is an fantastic opportunity get an insight into the candidate understanding of PowerShell core concepts and his/her favourite PowerShell features.
+For example, one of the most fundamental difference between bash and PowerShell is that bash is text-oriented whereas PowerShell is object-oriented.
+A good candidate should be able to tell that. A great candidate, would most likely go on and on about the benefits of the object-oriented nature of PowerShell.
+Also, if a candidate cites 2 valid differences between the two languages, but not a major one, the candidate might have a partial knowledge of PowerShell.
+
+Q.How would you ping a remote computer with 5 packets using PowerShell ?
+Again, this is basic stuff. I wouldn’t get caught up in ideology, the good old ping.exeis perfectly valid, as long as the candidate knows the option to specify 5 packets.
+If you really want the more PowerShelly Test-Connection, then ask : I just want the command to return $True if the ping is successful and $False if it is not.
+
+Q.What is the difference between ConvertTo-CSV and Export-CSV commands?
+ConvertTo-CSV is a one step process that only converts data into csv format and let it remain inside the shell
+Export-CSV is a 2 step process that not only converts data into CSV and also writes the output to a CSV format file.
+
+Q.How will you check the default path for PowerShell Modules ?
+Get-Content env:psmodulepath
+
+Q.How will you check what commands have been added after adding the new snapin to powershell ?
+Get-Command -pssnapin <snapin name> –> Lists all commands that got added when the snapin was added to the shell
+
+Q.What are the 4 types of FORMAT commands that can be used to format data?
+Format-Wide
+Format-List
+Format-Table
+Format-Custom
+
+Q.What is that path where PowerShell looks to get modules information and how would you know about them?
+Get-Content env:psmodulepath
+C:\Users\…\Documents\WindowsPowerShell\Modules
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+What are two ways of extending PowerShell?
+PSSnapins
+Modules
+Q.You have servers that are not exposed to internet. How would you update help on those servers? Give commands
+Save-Help –DestinationPath <Path Name>
+Update-Help –SourcePath <Path Name> or Update-Help –SourcePath <Path Name> -Force
+What are the 2 methods through which pipeline input would work?
+ByValue
+ByPropertyName
+
+Q.What argument can be used to convert an object into a string or convert the property of an object into the string?
+expand is the argument that should be used with the property name to convert an object property simply into a string.
+e.g Get-ADcomputer –filter * | select-Object –expand name
+
+How do you find the computer name?
+PS C:> hostname
+GOVARDHAN-PC
+PS C:> $env:COMPUTERNAME
+GOVARDHAN-PC
+PS C:> Get-WmiObject win32_operatingsystem | Select-Object -property PSComputerName, CSName
+PSComputerName                                                      CSName
+————–                                                                     ——
+GOVARDHAN-PC                                                          GOVARDHAN-PC
+PS C:> Get-ItemProperty -Path “HKLM:SYSTEMCurrentControlSetControlComputerNameActiveComputerName” -Name “ComputerName” | Select-Object -Property Computername
+ComputerName
+GOVARDHAN-PC
+PS C:>
+
+Q.How do you find the free space of C: drive in GBs?
+
+PS C:> Get-PSDrive –Name C | ForEach-Object {[math]::round($.free/1GB)}
+204
+PS C:> Get-PSDrive –Name C |  % {[math]::round($.free/1GB)}
+204
+PS C:> Get-PSDrive –Name C | Select-Object -Property free | % {[math]::round($_.free/1GB)}
+204
+PS C:> Get-WMIObject Win32_LogicalDisk -filter “DeviceID=’C:'” | % {[math]::round($_.FreeSpace/1GB)}
+204
+PS C:>
+
+Q.How do you convert a given value to Decimal, Hexadecimal, Octal and Binary values?
+$GivenValue = 0x0ff379
+PS C:> $GivenValue = 0x0ff379
+PS C:> “{0:D0}” -f $GivenValue
+1045369
+PS C:> “{0:N0}” -f $GivenValue
+1,045,369
+PS C:>
+OR using [Convert]
+PS C:> $GivenValue = 0x0ff379
+PS C:> [Convert]::ToString($GivenValue, 2)        # Binary
+11111111001101111001
+PS C:> [Convert]::ToString($GivenValue, 8)        # Octal
+3771571
+PS C:> [Convert]::ToString($GivenValue, 10)      # Decimal
+1045369
+PS C:> [Convert]::ToString($GivenValue, 16)      # HexaDecimal
+ff379
+PS C:>
+Q.How do you find all services that are set to run “Manual”  and not running.  All that are.
+There is NO native way to find a service startup details in PowerShell rather .Net itself.  Thealternate is to use the WMI object.
+Manual services Not running
+PS C:> Get-WmiObject -Class win32_service -Filter “StartMode=’Manual’ and State!=’Running'” | Select-Object -First 5 | ft -a
+ExitCode Name         ProcessId StartMode State   Status
+——– —-         ——— ——— —–   ——
+0 AeLookupSvc          0 Manual    Stopped OK
+1077 ALG                  0 Manual    Stopped OK
+1077 AppIDSvc             0 Manual    Stopped OK
+1077 AppMgmt              0 Manual    Stopped OK
+1077 aspnet_state         0 Manual    Stopped OK
+
+Manual services running
+PS C:> Get-WmiObject -Class win32_service -Filter “StartMode=’Manual’ and State=’Running'” | Select-Object -First 5 | ft -a
+ExitCode Name    ProcessId StartMode State   Status
+——– —-    ——— ——— —–   ——
+0 Appinfo       928 Manual    Running OK
+0 BITS          928 Manual    Running OK
+0 Browser       928 Manual    Running OK
+0 EapHost       928 Manual    Running OK
+0 KeyIso        544 Manual    Running OK
+PS C:>
+Q.Find top 100 processes that are consuming memory more than 100MB and export the list of processes to a CSV file
+In PowerShell 2.0:
+PS C:> Get-Process | where-object { $_.pm -gt 100MB }| select -First 100 | Sort pm -Descending
+Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
+——-  ——    —–      —– —–   ——     — ———–
+410      66   354076     276672 
+60; 287   812.59   2640 sqlservr
+1478     143   242504     279340 -1028    48.16   5644 w3wp
+1140     141   228120     234128  1900 3,404.22   6284 Management.Agent
+7766     169   213608      80040   752 …84.99   2996 ptagentservice
+PS C:>
+In PowerShell 3.0:
+PS C:> Get-Process | where pm -gt 100MB | select -First 100 | Sort pm -Descending
+Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
+——-  ——    —–      —– —–   ——     — ———–
+975      96   218396     225856  1020    32.43   4060 ScriptEditor
+524      66   200180     144448   830 1,963.15   5372 ABC.Management.Console
+1882     105   195328     120796   498 1,231.85   4896 chrome
+681      79   191096      81504   570   261.36   1568 devenv
+583      41   179828      89064   761    45.61   6044 powershell
+3059      69   175604      82452   476    43.63   5248 RemoteDesktopManager
+770      31   174104     164376   303             888 svchost
+3707     158   141244     160324   573 1,012.48   5244 OUTLOOK
+773     105   135560      56120   460   438.96   5376 WindowsLiveWriter
+665      56   121348      62996   765   333.34   3692 BoxSync
+PS C:> Get-Process | where pm -gt 100MB | select -First 100 | Sort pm -Descending | Export-Csv C:TempProcess-100MB-Memmory.csv
+PS C:> gci C:TempProcess-100MB-Memmory.csv
+Directory: C:Temp
+Mode                LastWriteTime     Length Name
+—-                ————-     —— —-
+-a—         5/14/2013   5:58 PM       9511 Process-100MB-Memmory.csv
+PS C:>
+Q.Read all log files for “ERROR” and print that lines that matches
+PS C:> gci “$env:tempCitrixLogs” -File  | foreach { Get-Content “$env:tempCitrixLogs$” | foreach { if ($ -match “Error”) {$_}  } }
+16:09:51     1484 E: [Detect plugin] completed: 2008 (ECError::eNotFound)
+16:12:57     1484 I: [NotifyUserIfError] started
+19:41:54      5AC _handleUrlQueryStringArgs(ERROR)
+16:12:49      7C8 ERROR C:UsersGOVARD~1AppDataLocalTempD57AD48E-AA94-4541-8BD6-26BF97ABF1B9G2MTestSound.wav : wrote 53718 of 53718 bytes.
+18:30:25     167C ERROR logSecurityInfo
+value>ERROR<array><type>struct</type><data></data></array></value></member></struct>
+PS C:>
+
+
+Q.Find all latest events that have “entered the stopped state” in System log within past 24 hours
+PS C:> Get-EventLog -LogName System -Message “entered the stopped state” -After $(Get-Date).AddHours(-24) -Newest 5
+Index Time          EntryType   Source                 InstanceID Message
+—– —-          ———   ——                 ———- ——-
+9764 May 13 11:58  Information Service Control M…   1073748860 The Multimedia Class Scheduler service entered …
+9762 May 13 11:48  Information Service Control M…   1073748860 The WinHTTP Web Proxy Auto-Discovery Service se…
+9761 May 13 11:43  Information Service Control M…   1073748860 The Multimedia Class Scheduler service entered …
+9759 May 13 11:34  Information Service Control M…   1073748860 The Multimedia Class Scheduler service entered …
+9756 May 13 11:14  Information Service Control M…   1073748860 The Application Experience service entered the …
+PS C:>
+PS C:> Get-WinEvent -LogName System | where Message | where-object { (($.Message -match “entered the stopped state”) –
+and ($.Timecreated -ge $((Get-Date).AddHours(-1)))) }
+ProviderName: Service Control Manager
+TimeCreated                     Id LevelDisplayName Message
+———–                     — —————- ——-
+5/13/2013 7:03:36 PM          7036 Information      The WinHTTP Web Proxy Auto-Discovery Service service entered the…
+5/13/2013 6:50:09 PM      &
+#160;   7036 Information      The Multimedia Class Scheduler service entered the stopped state.
+5/13/2013 6:44:24 PM          7036 Information      The TCP/IP NetBIOS Helper service entered the stopped state.
+5/13/2013 6:33:23 PM          7036 Information      The Disk Defragmenter service entered the stopped state.
+5/13/2013 6:13:32 PM          7036 Information      The Multimedia Class Scheduler service entered the stopped state.
+Get-WinEvent : The description string for parameter reference (%1) could not be found
+At line:1 char:1
++ Get-WinEvent -LogName System | where Message | where-object { (($_.Message -matc …
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : NotSpecified: (:) [Get-WinEvent], EventLogException
++ FullyQualifiedErrorId : The description string for parameter reference (%1) could not be found,Microsoft.PowerShell.Commands.GetWinEventCommand
+
+PS C:>
+You encounter above error if the Message field is empty for a given event.  The same script works fine if all the events in the criteria contains some message.
+PS C:> Get-WinEvent -LogName Application | where-object { (($.Message -match “SYMANTEC TAMPER PROTECTION ALERT”) -and
+($.Timecreated -ge $((Get-Date).AddHours(-1)))) }
+ProviderName: Symantec AntiVirus
+TimeCreated                     Id LevelDisplayName Message
+———–                     — —————- ——-
+5/13/2013 6:50:41 PM            45 Error             …
+5/13/2013 6:50:41 PM            45 Error             …
+5/13/2013 6:50:41 PM            45 Error             …
+5/13/2013 6:50:40 PM            45 Error             …
+5/13/2013 6:50:40 PM            45 Error             …
+5/13/2013 6:50:40 PM            45 Error             …
+PS C:>
+
+Q.How do you send a file as an attachment to an email recipient
+PS C:> Send-MailMessage -To myemail@gmail.com -From Dummy@gmail.com -Subject “System Events File is inAttachment” -Attachments “c:tempsysevents.csv” –SmtpServer smtpsrv1.google.com
+PS C:>
+Q.How do you measure the time taken for execution of a PowerShell command
+PS C:> Measure-Command { Get-WmiObject -Class win32_service | where-object { ($.StartMode -eq “Manual”) -and ($.State -eq “Running”) } } | select TotalSeconds | ft -a
+TotalSeconds
+0.5028714
+PS C:> Measure-Command { Get-WmiObject -Class win32_service -Filter “StartMode=’Manual’ and State=’Running'” } | Select TotalSeconds | ft -a
+TotalSeconds
+0.2707537
+
